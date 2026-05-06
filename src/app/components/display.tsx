@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function DisplayProducts() {
       const [popup, setPopup] = useState<any | null>(null);
-      const { products } = useContexts();
+      const { products, addToCart } = useContexts();
 
       return (
             <main>
@@ -24,7 +24,7 @@ export default function DisplayProducts() {
                         {products?.slice(0, 6).map((item: any) => (
                               <div
                                     key={item.id}
-                                    className="border rounded-lg p-4 flex flex-col items-center shadow hover:shadow-md"
+                                    className="rounded-lg p-4 flex flex-col items-center shadow border-blue-100 border hover:shadow-md"
                               >
                                     <div className="h-40 flex items-center">
                                           <Image
@@ -42,7 +42,7 @@ export default function DisplayProducts() {
                                     </h1>
                                     <p className="text-blue-600 font-semibold">${item.price}</p>
 
-                                    <button className="mt-2 bg-cyan-900 text-white px-4 py-1 rounded">
+                                    <button className="mt-2 bg-cyan-900 text-white px-4 py-1 rounded cursor-pointer">
                                           SHOPPING
                                     </button>
                               </div>
@@ -54,16 +54,9 @@ export default function DisplayProducts() {
                         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
 
                               <div className="bg-white p-6 rounded-lg w-[90%] max-w-md relative">
-
-                                    {/* CLOSE */}
                                     <button
                                           onClick={() => setPopup(null)}
-                                          className="absolute top-2 right-3 text-xl cursor-pointer"
-                                    >
-                                          ✕
-                                    </button>
-
-                                    {/* CONTENT */}
+                                          className="absolute top-2 right-3 text-xl cursor-pointer">✕</button>
                                     <div className="flex flex-col items-center">
                                           <Image
                                                 src={popup.image}
@@ -80,7 +73,7 @@ export default function DisplayProducts() {
                                                 ${popup.price}
                                           </p>
 
-                                          <button className="mt-4 bg-cyan-900 text-white px-6 py-2 rounded">
+                                          <button className="mt-4 bg-cyan-900 text-white px-6 py-2 rounded cursor-pointer" onClick={()=> addToCart(popup)}>
                                                 Add to Cart
                                           </button>
                                     </div>

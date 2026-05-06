@@ -15,9 +15,9 @@ export default function NavBar(){
                   <div className="hidden w-auto h-auto lg:flex justify-center items-center">
                         <ul className="flex justify-around">
                               <Link href={'/'} className="w-20 hover:underline text-cyan-950 text-[18px]">Home</Link>
-                              <Link href={'/'} className="w-20 hover:underline text-cyan-950 text-[18px]">Shop</Link>
-                              <Link href={'/'} className="w-20 hover:underline text-cyan-950 text-[18px]">About</Link>
-                              <Link href={'/'} className="w-20 hover:underline text-cyan-950 text-[18px]">Checkout</Link>
+                              <Link href={'/users/products'} className="w-25 hover:underline text-cyan-950 text-[18px]">Products</Link>
+                              <Link href={'/users/about'} className="w-20 hover:underline text-cyan-950 text-[18px]">About</Link>
+                              <Link href={'/users/checkout'} className="w-20 hover:underline text-cyan-950 text-[18px]">Checkout</Link>
                         </ul>
                   </div>
                   <div className="hidden lg:flex flex-row justify-between items-center">
@@ -38,9 +38,9 @@ export default function NavBar(){
                   {open && (
                         <div className="absolute top-16 left-0 w-full bg-mist-400 shadow-md flex flex-col items-center py-4 gap-3 lg:hidden">
                               <Link href="/">Home</Link>
-                              <Link href="/">Shop</Link>
-                              <Link href="/">About</Link>
-                              <Link href="/">Checkout</Link>
+                              <Link href="/users/products">Products</Link>
+                              <Link href="/users/about">About</Link>
+                              <Link href="/users/checkout">Checkout</Link>
 
                               <input
                                     type="search"

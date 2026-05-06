@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Slider() {
       return (
-            <main className="w-full bg-white flex flex-col-reverse h-100 lg:flex-row justify-around items-center shadow p-4">
+            <main className="w-full bg-white flex flex-col-reverse h-100 lg:flex-row justify-around items-center p-4">
                   <div className="flex flex-col justify-center items-center text-center lg:items-start lg:text-left">
                         <h1 className="text-indigo-700 text-[16px] lg:text-[28px] font-semibold">
                               PRODUCTS OF SHOPPING

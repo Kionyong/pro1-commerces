@@ -1,3 +1,4 @@
+import Footer from "./components/footer";
 import NavBar from "./components/navbar";
 import { ProviderContext } from "./context/context";
 
@@ -9,6 +10,7 @@ export default function RootLayout({children}:{children:React.ReactNode}){
         <ProviderContext>
           {children}
         </ProviderContext>
+        <Footer />
       </body>
     </html>
   )

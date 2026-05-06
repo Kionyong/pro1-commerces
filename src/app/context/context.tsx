@@ -22,10 +22,8 @@ export const ProviderContext=({children}:any)=>{
             getProducts(); //call functiion
       },[]);
       //function delete products index
-      const removeItem =(index:any)=>{
-            if (!confirm("Are you sure?")) return;
-            const deleteItem = products.filter((_,i)=> i !== index);
-            setProducts(deleteItem);
+      const removeFromCart = (id: number) => {
+            setCart((prev) => prev.filter((item) => item.id !== id));
       };
       //function 
       const searchProducts = (text: string) => {
@@ -37,11 +35,38 @@ export const ProviderContext=({children}:any)=>{
       };
 
       //add cart
-      const addToCart=()=>{
-            setCart([...products,cart]);
-      }
+      const addToCart = (product: any) => {
+            setCart((prev:any[]) => {
+                  const exist = prev.find((item) => item.id === product.id);
 
-      return <contextProvider.Provider value={{ products, removeItem, searchProducts, filtered, search }}>
+                  if (exist) {
+                        return prev.map((item) =>
+                              item.id === product.id
+                                    ? { ...item, qty: item.qty + 1 } 
+                                    : item
+                        );
+                  }
+                  return [...prev, { ...product, qty: 1 }];
+            });
+      };
+      const increaseQty = (id: number) => {
+            setCart((prev) =>
+                  prev.map((item) =>
+                        item.id === id ? { ...item, qty: item.qty + 1 } : item
+                  )
+            );
+      };
+
+      const decreaseQty = (id: number) => {
+            setCart((prev) =>
+                  prev.map((item) =>
+                        item.id === id && item.qty > 1
+                              ? { ...item, qty: item.qty - 1 }
+                              : item
+                  )
+            );
+      };
+      return <contextProvider.Provider value={{ decreaseQty, increaseQty, cart, addToCart, products, removeFromCart, searchProducts, filtered, search }}>
             {children}
       </contextProvider.Provider>
 };
