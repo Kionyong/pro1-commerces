@@ -8,7 +8,7 @@ export default function NavBar(){
       const { searchProducts } = useContexts();
       //use search products
       return(
-            <main className="w-full bg-white flex flex-row h-16 justify-around border-black border-b">
+            <main className="w-full bg-white flex flex-row h-16 justify-around">
                   <div className="w-auto h-auto flex justify-center items-center ">
                         <Link href={'/'} className="text-[20px] font-bold text-black">SHOPPING</Link>
                   </div>
