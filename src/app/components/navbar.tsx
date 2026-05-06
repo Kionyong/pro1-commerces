@@ -3,10 +3,10 @@ import "@/app/globals.css";
 import Link from "next/link";
 import { useContexts } from "../context/context";
 import { useState } from "react";
+import { FiX } from "react-icons/fi";
+import { CiMenuBurger } from "react-icons/ci";
 export default function NavBar(){
       const [open,setOpen] = useState(false);
-      const { searchProducts } = useContexts();
-      //use search products
       return(
             <main className="w-full bg-white flex flex-row h-16 justify-around">
                   <div className="w-auto h-auto flex justify-center items-center ">
@@ -33,7 +33,7 @@ export default function NavBar(){
                         </Link>
                   </div>
                   <button type="button" className="lg:hidden text-black text-2xl" onClick={()=>setOpen(!open)}>
-                        ☰
+                        { open ? <FiX /> : <CiMenuBurger /> }
                   </button>
                   {open && (
                         <div className="absolute top-16 left-0 w-full bg-mist-400 shadow-md flex flex-col items-center py-4 gap-3 lg:hidden">

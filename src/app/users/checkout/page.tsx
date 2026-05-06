@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { CiCreditCard1 } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
 export default function Checkout() {
       const { cart, increaseQty, decreaseQty, removeFromCart } = useContexts();
       const getTotal = () => {
@@ -67,9 +68,9 @@ export default function Checkout() {
                                     {/* DELETE */}
                                     <button
                                           onClick={() => removeFromCart(items.id)}
-                                          className="text-red-500 text-sm"
+                                          className="text-red-500 text-sm cursor-pointer"
                                     >
-                                          Delete
+                                          <MdDelete  size={15}/>
                                     </button>
                               </div>
                         ))}
@@ -85,24 +86,25 @@ export default function Checkout() {
 
                               <div className="mt-2 space-y-2">
                                     <label className="flex items-center gap-2">
-                                          <input type="radio" name="payment" />
+                                          <input type="radio" name="payment" required />
                                           <FcGoogle /> Google
                                     </label>
 
                                     <label className="flex items-center gap-2">
-                                          <input type="radio" name="payment" />
+                                          <input type="radio" name="payment" required />
                                           <CiCreditCard1 /> Credit Card
                                     </label>
                               </div>
 
                               {/* FORM */}
-                              <div className="mt-4 space-y-4">
+                              <form className="mt-4 space-y-4">
                                     <div>
                                           <label className="text-sm">Name On Card</label>
                                           <input
                                                 type="text"
                                                 placeholder="Enter name"
                                                 className="w-full border h-9 rounded-lg px-3"
+                                                required
                                           />
                                     </div>
 
@@ -112,6 +114,7 @@ export default function Checkout() {
                                                 type="text"
                                                 placeholder="Enter number"
                                                 className="w-full border h-9 rounded-lg px-3"
+                                                required
                                           />
                                     </div>
 
@@ -121,6 +124,8 @@ export default function Checkout() {
                                                 <input
                                                       type="text"
                                                       className="w-full border h-9 rounded-lg px-3"
+                                                      required
+                                                      placeholder="Enter expiration"
                                                 />
                                           </div>
 
@@ -129,14 +134,16 @@ export default function Checkout() {
                                                 <input
                                                       type="text"
                                                       className="w-full border h-9 rounded-lg px-3"
+                                                      placeholder="Enter CVV"
+                                                      required
                                                 />
                                           </div>
                                     </div>
 
-                                    <button className="w-full bg-green-600 text-white h-10 rounded-lg">
+                                    <button className="w-full bg-green-600 text-white h-10 rounded-lg cursor-pointer">
                                           Checkout (${getTotal()})
                                     </button>
-                              </div>
+                              </form>
                         </div>
                   </div>
             </main>

@@ -1,7 +1,6 @@
 'use client';
 import { createContext,useContext, useEffect, useState } from "react";
 const contextProvider = createContext<any>([]);//create context for share data to pages ,
-
 export const ProviderContext=({children}:any)=>{
       const [products,setProducts] =useState<any[]>([]);
       const [search, setSearch] = useState<string>("");

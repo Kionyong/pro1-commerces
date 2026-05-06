@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Slider() {
       return (
@@ -12,7 +13,7 @@ export default function Slider() {
                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, quia?
                         </p>
                         <button className="mt-2 py-2 px-6 cursor-pointer text-white rounded-lg bg-cyan-950">
-                              SHOPPING
+                              <Link href={'/users/products'}>PRODUCTS</Link>
                         </button>
                   </div>
                   <div className="mb-4 lg:mb-0">

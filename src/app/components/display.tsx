@@ -3,6 +3,9 @@ import "@/app/globals.css";
 import { useContexts } from "../context/context";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
+import toast from "react-hot-toast";
+import { CiShoppingCart } from "react-icons/ci";
 
 export default function DisplayProducts() {
       const [popup, setPopup] = useState<any | null>(null);
@@ -42,8 +45,8 @@ export default function DisplayProducts() {
                                     </h1>
                                     <p className="text-blue-600 font-semibold">${item.price}</p>
 
-                                    <button className="mt-2 bg-cyan-900 text-white px-4 py-1 rounded cursor-pointer">
-                                          SHOPPING
+                                    <button className="mt-2 py-2 px-6 cursor-pointer text-white rounded-lg bg-cyan-950">
+                                          <Link href={'/users/products'}>PRODUCTS</Link>
                                     </button>
                               </div>
                         ))}
@@ -73,8 +76,15 @@ export default function DisplayProducts() {
                                                 ${popup.price}
                                           </p>
 
-                                          <button className="mt-4 bg-cyan-900 text-white px-6 py-2 rounded cursor-pointer" onClick={()=> addToCart(popup)}>
-                                                Add to Cart
+                                          <button
+                                                type="button"
+                                                className="mt-2 bg-cyan-900 text-white px-4 py-1 rounded cursor-pointer"
+                                                onClick={() => {
+                                                      addToCart(popup);
+                                                      toast.success(<CiShoppingCart />);
+                                                }}
+                                          >
+                                                Add Cart
                                           </button>
                                     </div>
                               </div>

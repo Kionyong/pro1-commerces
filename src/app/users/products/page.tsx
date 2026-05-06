@@ -3,8 +3,8 @@ import { useContexts } from "@/app/context/context";
 import "@/app/globals.css";
 import Image from "next/image";
 import { useState } from "react";
-
-
+import toast from "react-hot-toast";
+import { CiShoppingCart } from "react-icons/ci";
 export default function Products(){
       const { products, addToCart } = useContexts();
       const [popup,setPopup] = useState<any | null>(null);
@@ -26,10 +26,13 @@ export default function Products(){
                                           <div className="w-full h-auto flex flex-col p-4">
                                                 <h1 className="text-sm font-medium text-center mt-2">{items.title}</h1>
                                                 <p className="text-blue-600 font-semibold text-center">{items.price}</p>
-                                                <button 
-                                                      type="button" 
-                                                      className=" mt-2 bg-cyan-900 text-white px-4 py-1 rounded cursor-pointer"
-                                                      onClick={()=> addToCart(items)}
+                                                <button
+                                                      type="button"
+                                                      className="mt-2 bg-cyan-900 text-white px-4 py-1 rounded cursor-pointer"
+                                                      onClick={() => {
+                                                            addToCart(items);
+                                                            toast.success(<CiShoppingCart />);
+                                                      }}
                                                 >
                                                       Add Cart
                                                 </button>
@@ -59,8 +62,15 @@ export default function Products(){
                                                       ${popup.price}
                                                 </p>
 
-                                                <button className="mt-4 bg-cyan-900 text-white px-6 py-2 rounded cursor-pointer" onClick={() => addToCart(popup)}>
-                                                      Add to Cart
+                                                <button
+                                                      type="button"
+                                                      className="mt-2 bg-cyan-900 text-white px-4 py-1 rounded cursor-pointer"
+                                                      onClick={() => {
+                                                            addToCart(popup);
+                                                            toast.success( <CiShoppingCart />);
+                                                      }}
+                                                >
+                                                      Add Cart
                                                 </button>
                                           </div>
                                     </div>
